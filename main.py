@@ -98,12 +98,13 @@
 
 
 import openai
+import os
 from fastapi import FastAPI, Form, Depends, Request
 from decouple import config
 from utils import send_message, logger
 
 app = FastAPI()
-openai.api_key = config("OPENAI_API_KEY")
+openai.api_key = os.getenv("OPENAI_API_KEY")
 whatsapp_number = config("TO_NUMBER")
 
 conversations = {}
